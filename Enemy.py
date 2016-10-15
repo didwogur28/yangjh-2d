@@ -27,15 +27,19 @@ class EnemyTwo:
     image = None
 
     def __init__(self):
-        self.x, self.y = random.randint(80, 750), random.randint(1000, 1100)
+        self.x, self.y = random.randint(-100, 00), random.randint(500, 1100)
         self.frame = 0
         self.speed = random.randint(5, 6)
 
     def update(self):
-        if (self.y < 0):
-            self.y = 750
-            self.x = random.randint(30, 770)
+        self.x += self.speed
         self.y -= self.speed
+
+        if (self.y < 0):
+            self.x = random.randint(-100, 00)
+            self.y = random.randint(500, 1100)
+        elif (self.x > 700):
+            self.x -= self.speed
 
         if EnemyTwo.image == None:
             EnemyTwo.image = load_image('object/Enemy/Enemy2.png')
@@ -47,15 +51,19 @@ class EnemyThree:
     image = None
 
     def __init__(self):
-        self.x, self.y = random.randint(80, 750), random.randint(1000, 1100)
+        self.x, self.y = random.randint(800, 1000), random.randint(500, 1100)
         self.frame = 0
         self.speed = random.randint(5, 6)
 
     def update(self):
-        if (self.y < 0):
-            self.y = 750
-            self.x = random.randint(30, 770)
+        self.x -= self.speed
         self.y -= self.speed
+
+        if (self.y < 0):
+            self.x = random.randint(800, 1000)
+            self.y = random.randint(500, 1100)
+        elif (self.x <100):
+            self.x += self.speed
 
         if EnemyThree.image == None:
             EnemyThree.image = load_image('object/Enemy/Enemy3.png')
