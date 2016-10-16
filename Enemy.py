@@ -76,7 +76,7 @@ class MiddleBoss:
 
     DOWN_IDLE = 0
     def __init__(self):
-        self.x, self.y = 200, 550
+        self.x, self.y = 200, 2000
         self.frame = random.randint(0,1)
 
         self.state  =  self.DOWN_IDLE
@@ -84,8 +84,13 @@ class MiddleBoss:
             MiddleBoss.image = load_image('object/Enemy/MiddleBoss.png')
 
     def update(self):
+        self.y -= 10
+        if self.x <200:
+            self.x = 200
         if self.state == self.DOWN_IDLE:
             self.frame = (self.frame + 1) % 8
+        if self.y < 580:
+            self.y = 580
 
     def draw(self):
              self.image.clip_draw(self.frame * 320, 0, 320, 390, self.x, self.y)
@@ -95,7 +100,7 @@ class Boss:
 
     DOWN_IDLE = 0
     def __init__(self):
-        self.x, self.y = 600, 580
+        self.x, self.y = 600, 3000
         self.frame = random.randint(0,1)
 
         self.state  =  self.DOWN_IDLE
@@ -103,8 +108,11 @@ class Boss:
             Boss.image = load_image('object/Enemy/Boss.png')
 
     def update(self):
+        self.y -= 10
         if self.state == self.DOWN_IDLE:
             self.frame = (self.frame + 1) % 8
+        if self.y < 580:
+            self.y = 580
 
     def draw(self):
              self.image.clip_draw(self.frame * 420, 0, 420, 300, self.x, self.y)
